@@ -2,6 +2,7 @@ package com.moviles.basicfirebaseapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -19,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
  */
         myRef.child("ejemplo").get().addOnSuccessListener { response ->
-            Log.d("firebaseResponse")
+            Log.d("firebaseResponse", response.value.toString())
+        }.addOnFailureListener {
+            Log.e("firebaseResponse", "Error getting data", it)
         }
     }
 }
